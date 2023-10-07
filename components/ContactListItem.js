@@ -3,7 +3,6 @@ import { fetchContacts } from "../untility/api";
 import { Image, Text, TouchableHighlight, View } from "react-native";
 import colors from "../untility/colors";
 import { Divider } from "react-native-paper";
-
 const ContactListItem = ({ name, phone, avatar, onPress }) => {
 
   return (

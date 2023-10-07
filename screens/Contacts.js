@@ -1,18 +1,17 @@
 import React, { useEffect, useState } from "react";
 import ContactListItem from "../components/ContactListItem";
 import { fetchContacts } from "../untility/api";
-import { ActivityIndicator, Divider } from "react-native-paper";
-import {  View } from "react-native";
-import { ScrollView } from "react-native-web";
+import {  View , ActivityIndicator, ScrollView} from "react-native";
+import { Divider } from "react-native-paper";
 
 const Contacts = ({navigation}) => {
   const [contactList, setContactList] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(false);
   useEffect(() => {
     fetchContacts()
       .then((data) => {
-        setIsLoading(false);
+        setIsLoading(true);
         setError(false);
         setContactList(data);
       })
@@ -22,7 +21,7 @@ const Contacts = ({navigation}) => {
   }, []);
   return (
     <ScrollView>
-      {!isLoading ? (
+      {isLoading ? (
         <div>
           {contactList.map((item) => {
             return (

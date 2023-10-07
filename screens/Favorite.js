@@ -1,18 +1,18 @@
 import React, { useEffect, useState } from "react";
 import { fetchContacts } from "../untility/api";
 import ContactThumbnail from "../components/ContactThumnails";
-import { FlatList, Text, View } from "react-native-web";
+import { FlatList, Text, View } from "react-native";
 import { ActivityIndicator } from "react-native-paper";
 import { StyleSheet } from "react-native";
 
 const keyExtractor = ({phone}) => phone
 const Favorite = ({ navigation }) => {
   const [contacts, setContacts] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   useEffect(() => {
     fetchContacts().then((contact) => {
       setContacts(contact);
-      setLoading(false);
+      setLoading(true);
     });
   },[]);
 
@@ -28,8 +28,8 @@ const Favorite = ({ navigation }) => {
   };
   return (
     <View style={styles.container}>
-      {loading && <ActivityIndicator color="blue" size={"large"} />}
-      {!loading && (
+      
+      {loading ? (
         <FlatList 
           data={contacts}
           keyExtractor={keyExtractor}
@@ -37,7 +37,7 @@ const Favorite = ({ navigation }) => {
           contentContainerStyle={styles.list}
           renderItem={renderFavoriteThumbnail}
         />
-      )}
+      ) : <ActivityIndicator color="blue" size={"large"} /> }
     </View>
   );
 };

@@ -1,25 +1,16 @@
-import { StatusBar } from "expo-status-bar";
+import 'react-native-gesture-handler';
 import { StyleSheet, Text, View } from "react-native";
-import Contacts from "./screens/Contacts";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { NavigationContainer } from "@react-navigation/native";
-import Profile from "./components/Profile";
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import TabBottom from "./components/TabBottom";
-import EmptyScreen from "./components/EmptyScreen";
+import { createDrawerNavigator } from "@react-navigation/drawer";
+import DrawerNavigator from './navigation/DrawerNavigator';
 
-const Stack = createNativeStackNavigator();
-const Tab = createBottomTabNavigator();
 export default function App() {
   return (
-    <View style={styles.container}>
       <NavigationContainer>
-        <Stack.Navigator>
-          <Stack.Screen name="Contact" component={TabBottom} options={{headerShown : false}} />
-          <Stack.Screen name="Profile" component={Profile} />
-        </Stack.Navigator>
+        
+       <DrawerNavigator />
       </NavigationContainer>
-    </View>
   );
 }
 
