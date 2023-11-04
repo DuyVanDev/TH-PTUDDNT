@@ -16,7 +16,7 @@ const Profile = ({route}) => {
         <View style={styles.avatar}>
             <DetailListItem icon="mail" title="Email" subtitle={contact.email} />
             <DetailListItem icon="phone" title="Work" subtitle={contact.phone} />
-            <DetailListItem icon="smartphone" title="Peronal" subtitle={contact.cell} />
+            <DetailListItem icon="smartphone" title="Peronal" subtitle={contact.phone} />
         </View>
     </View>
   )
